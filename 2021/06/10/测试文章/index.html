@@ -23,16 +23,16 @@
 <meta property="og:site_name" content="chaosuo&#39;s blog">
 <meta property="og:description" content="传统图像处理颜色空间 RGB HSI CMYK YUV  OpenCV 读取图像存储的顺序为什么是 BGR，而不是 RGB？   TODO  高斯滤波 先引入两个问题。 1.图像为什么要滤波？ 答：a.消除图像在数字化过程中产生或者混入的噪声。 b.提取图片对象的特征作为图像识别的特征模式。 2.滤波器该如何去理解? 答：滤波器可以想象成一个包含加权系数的窗口或者说一个镜片，当使用滤波器去平滑处理">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/DLIB-0024.png">
+<meta property="og:image" content="http://example.com/DLIB-0024.png">
 <meta property="og:image" content="http://example.com/img/DLIB-0025.png">
 <meta property="og:image" content="http://example.com/img/DLIB-0026.png">
 <meta property="og:image" content="http://example.com/img/DLIB-0027.png">
 <meta property="article:published_time" content="2021-06-10T08:35:20.000Z">
-<meta property="article:modified_time" content="2022-07-19T07:43:26.388Z">
+<meta property="article:modified_time" content="2022-07-19T08:39:23.463Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/DLIB-0024.png">
+<meta name="twitter:image" content="http://example.com/DLIB-0024.png">
   
   
   
@@ -297,7 +297,7 @@
 <p>首先，<strong>噪声</strong>在图像当中常表现为一引起较强视觉效果的孤立像素点或像素块。简单来说，噪声的出现会给图像带来干扰，让图像变得不清楚。<br><strong>高斯噪声</strong>就是它的概率密度函数服从高斯分布（即正态分布）的一类噪声。如果一个噪声，它的幅度分布服从高斯分布，而它的功率谱密度又是均匀分布的，则称它为高斯白噪声。高斯白噪声的二阶矩不相关，一阶矩为常数，是指先后信号在时间上的相关性。</p>
 <p><strong>高斯滤波器是根据高斯函数的形状来选择权值的线性平滑滤波器</strong><br> 所以接下来再讲解一下高斯函数和高斯核。</p>
 <p><strong>2 高斯函数</strong></p>
-<p><img src="/img/DLIB-0024.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/DLIB-0024.png" srcset="/img/loading.gif" lazyload></p>
 <p>注：σ的大小决定了高斯函数的宽度。</p>
 <p><strong>3 高斯核</strong></p>
 <p>理论上，高斯分布在所有定义域上都有非负值，这就需要一个无限大的卷积核。实际上，仅需要取均值周围3倍标准差内的值，以外部份直接去掉即可。<br> <strong>高斯滤波的重要两步就是先找到高斯模板然后再进行卷积</strong>，模板（mask在查阅中有的地方也称作掩膜或者是高斯核）。所以这个时候需要知道它怎么来？又怎么用？<br> 举个栗子：<br> 假定中心点的坐标是（0,0），那么取距离它最近的8个点坐标，为了计算，需要设定σ的值。假定σ&#x3D;1.5，则模糊半径为1的高斯模板就算如下</p>
